@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>MWP Assignment 3 - Mobile Frameworks</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="myApp">
+
+        <div class="section-wrapper">
+            <div ng-controller="myCtrl">
+            <section class="section">
+                <h1 style="font-size: 35px; text-transform: uppercase;">Mobile Web Programming</h1>
+                <p style="font-size: 25px; font-weight: bold; color: red;">Angular JS Example:</p>
+            </section>
+        
+            <section class="section">
+                <h1>Geolocation API Example</h1>
+                <p id="location">Retrieving your location... {{location}}</p>
+            </section>
+            
+            <section class="section">
+                <h1>Session Storage API Example</h1>
+                <p id="welcomeMsg">{{welcomeMsg}}</p>
+            </section>
+        
+            <section class="section">
+            <div class="link">
+                <a href="index.html">JQuery Examples</a>
+            </div>
+            </section>
+            </div>
+        </div>        
+
+<script>
+    var app = angular.module("myApp", []);
+
+app.controller("myCtrl", function($scope) {
+    // Geolocation
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            sessionStorage.setItem("latitude", latitude);
+            sessionStorage.setItem("longitude", longitude);
+            $scope.location = "Your location: " + latitude + ", " + longitude;
+            $scope.$apply();
+        });
+    } else {
+        $scope.location = "Geolocation is not supported by this browser.";
+    }
+
+    // Session storage
+    var username = sessionStorage.getItem("username");
+
+    if (username) {
+        $scope.welcomeMsg = "Welcome back, " + username + "!";
+    } else {
+        username = prompt("Please enter your name:");
+
+        if (username) {
+            sessionStorage.setItem("username", username);
+            $scope.welcomeMsg = "Welcome, " + username + "!";
+        }
+    }
+});
+</script> 
+</body>
+</html>
