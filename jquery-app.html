@@ -1,33 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Session Storage Example</title>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			// Check if the user's name exists in sessionStorage
-			var username = sessionStorage.getItem("username");
-
-			if (username) {
-				// Display a welcome message to the user
-				$("#welcomeMsg").text("Welcome back, " + username + "!");
-			} else {
-				// Prompt the user to enter their name
-				username = prompt("Please enter your name:");
-
-				if (username) {
-					// Save the user's name in sessionStorage
-					sessionStorage.setItem("username", username);
-
-					// Display a welcome message to the user
-					$("#welcomeMsg").text("Welcome, " + username + "!");
-				}
-			}
-		});
-	</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>MWP Assignment 3 - Mobile Frameworks</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Session Storage Example</h1>
-	<p id="welcomeMsg"></p>
+
+<div class="section-wrapper">
+    <section class="section">
+        <h1 style="font-size: 35px; text-transform: uppercase;">Mobile Web Programming</h1>
+	    <p style="font-size: 25px; font-weight: bold; color: red;">JQuery Example:</p>
+    </section>
+
+    <section class="section">
+        <h1>Geolocation API Example</h1>
+	    <p id="location">Retrieving your location...</p>
+    </section>
+    
+    <section class="section">
+        <h1>Session Storage API Example</h1>
+	    <p id="welcomeMsg"></p>
+    </section>
+
+    <section class="section">
+    <div class="link">
+        <a href="angular.html">Angular Examples</a>
+    </div>
+    </section>
+</div>
+    <script src="script.js"></script>
+    
 </body>
 </html>
