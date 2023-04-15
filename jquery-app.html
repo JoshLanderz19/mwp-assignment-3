@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Session Storage Example</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			// Check if the user's name exists in sessionStorage
+			var username = sessionStorage.getItem("username");
+
+			if (username) {
+				// Display a welcome message to the user
+				$("#welcomeMsg").text("Welcome back, " + username + "!");
+			} else {
+				// Prompt the user to enter their name
+				username = prompt("Please enter your name:");
+
+				if (username) {
+					// Save the user's name in sessionStorage
+					sessionStorage.setItem("username", username);
+
+					// Display a welcome message to the user
+					$("#welcomeMsg").text("Welcome, " + username + "!");
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+	<h1>Session Storage Example</h1>
+	<p id="welcomeMsg"></p>
+</body>
+</html>
